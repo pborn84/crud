@@ -3,11 +3,18 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "crud-angular": {
+    "crud": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
         }
       },
       "root": "",
@@ -17,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/crud-angular",
+            "outputPath": "dist/crud",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -33,12 +40,7 @@
               "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -68,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "crud-angular:build:production"
+              "buildTarget": "crud:build:production"
             },
             "development": {
-              "buildTarget": "crud-angular:build:development"
+              "buildTarget": "crud:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "crud-angular:build"
+            "buildTarget": "crud:build"
           }
         },
         "test": {
@@ -106,6 +108,6 @@
     }
   },
   "cli": {
-    "analytics": "b4179f77-e4b1-4a68-b1de-39d568fd56a6"
+    "analytics": false
   }
 }
